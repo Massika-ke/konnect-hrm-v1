@@ -51,6 +51,12 @@ class Employee extends Model
         return $this->hasMany(Contract::class);
     }
 
+    public function getActiveContract($start_date = null, $end_date = null)
+    {
+        $start_date = $start_date ?? now();
+        $end_date = $end_date ?? now();
 
+        return $this->contracts()->where('start_date', '<=', $start_date)->where('end_date', '>=', $end_date)->first();
+    }
 
 }
