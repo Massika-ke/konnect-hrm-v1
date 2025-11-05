@@ -29,7 +29,7 @@ class Contract extends Model
     {
         return Carbon::parse($this->start_date)->diffForHumans($this->end_date);
     }
-
+    
     public function scopeSearchByEmployee($query, $name)
     {
         return $query->whereHas('employee', function($q) use ($name)
