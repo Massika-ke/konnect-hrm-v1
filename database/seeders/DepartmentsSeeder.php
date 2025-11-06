@@ -36,34 +36,34 @@ class DepartmentsSeeder extends Seeder
             switch ($department->name) {
                 case 'Engineering':
                     $designations = [
-                        ['name' => 'Software Engineer'],
-                        ['name' => 'Cyber Security'],
-                        ['name' => 'Engineering Manager'],
-                        ['name' => 'QA Engineer'],
+                        'Software Engineer',
+                        'Cyber Security',
+                        'Engineering Manager',
+                        'QA Engineer',
                     ];
                     break;
 
                 case 'Human Resources':
                     $designations = [
-                        ['name' => 'HR Manager'],
-                        ['name' => 'Recruiter'],
-                        ['name' => 'HR Coordinator'],
+                         'HR Manager',
+                         'Recruiter',
+                         'HR Coordinator',
                     ];
                     break;
 
                 case 'Finance':
                     $designations = [
-                        ['name' => 'Accountant'],
-                        ['name' => 'Financial Analyst'],
-                        ['name' => 'Finance Manager'],
+                         'Accountant',
+                         'Financial Analyst',
+                         'Finance Manager',
                     ];
                     break;
 
                 case 'Marketing':
                     $designations = [
-                        ['name' => 'Marketing Manager'],
-                        ['name' => 'Content Strategist'],
-                        ['name' => 'SEO Specialist'],
+                         'Marketing Manager',
+                         'Content Strategist',
+                         'SEO Specialist',
                     ];
                     break;
                 default:
