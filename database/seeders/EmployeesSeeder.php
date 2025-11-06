@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Company;
+use App\Models\Designation;
 use App\Models\Employee;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,8 +19,11 @@ class EmployeesSeeder extends Seeder
         $faker = Factory::create();
         $companies = Company::all();
 
+        // foreach company x departments x Designation x no-of employees
         foreach ($companies as $key => $company) {
             foreach ($company->departments as $department) {
+
+                // for each designation, create 3 employees
                 foreach ($department->designations as $key => $designation) {
                     for ($i=0; $i < 3; $i++) {
                         Employee::create([
