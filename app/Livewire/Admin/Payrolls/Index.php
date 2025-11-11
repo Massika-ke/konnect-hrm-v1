@@ -25,21 +25,31 @@ class Index extends Component
 
     public function generatePayroll()
     {
-        $this->validate();
+        $this->validate(); // validate input
         $date = Carbon::parse($this->monthYear);
-        if (Payroll::inCompany()->where('month', $date->format('m'))->where('year', $date->format('Y'))->exists()) {
+
+        // Duplicate check, if payroll exists
+        if (Payroll::inCompany()->where('month', $date->format('m'))
+            ->where('year', $date->format('Y'))->exists()) {
             throw ValidationException::withMessages([
                 'monthYear' => 'Payroll for the selected month and year already exists.',
             ]);
-        } else {
+        }
+        // create new payroll with records from the session
+         else {
             $payroll = new Payroll();
             $payroll->month = $date->format('m');
             $payroll->year = $date->format('Y');
             $payroll->company_id = session('company_id');
             $payroll->save();
 
+            // loop thru all employees in the company, check for an active contract
             foreach (Employee::inCompany()->get() as $employee) {
-                $contract = $employee->getActiveContract($date->startOfMonth()->toDateString(), $date->endOfMonth()->toDateString());
+                $contract = $employee->getActiveContract(
+                    $date->startOfMonth()->toDateString(), 
+                    $date->endOfMonth()->toDateString());
+
+                    // If an active contract exits, create salary record
                 if ($contract) {
                     $payroll->salaries()->create([
                         'employee_id' => $employee->id,
@@ -53,11 +63,16 @@ class Index extends Component
 
     public function updatePayroll($id)
     {
+        // find and delete existing salary records
         $payroll = Payroll::inCompany()->find($id);
         $payroll->salaries()->delete();
 
         foreach (Employee::inCompany()->get() as $employee) {
-            $contract = $employee->getActiveContract($payroll->year. '-'.$payroll->month.'-01', $payroll->year. '-'.$payroll->month.'-31');
+            $contract = $employee->getActiveContract(
+                $payroll->year. '-'.$payroll->month.'-01', 
+                $payroll->year. '-'.$payroll->month.'-31');
+
+                // recreate salary records
             if ($contract) {
                 $payroll->salaries()->create([
                     'employee_id' => $employee->id,
