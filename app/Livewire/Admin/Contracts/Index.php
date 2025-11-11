@@ -9,17 +9,9 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination, WithoutUrlPagination;
-
-    public function delete($id)
-    {
-        Department::find($id)->delete();
-        session()->flash('success', 'Department deleted successfully.');
-    }
+   
     public function render()
     {
-        return view('livewire.admin.departments.index', [
-            'depart ments' => Department::inCompany()->paginate(5),
-        ]);
+        return view('livewire.admin.departments.index');
     }
 }

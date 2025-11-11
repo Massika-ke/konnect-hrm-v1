@@ -39,9 +39,13 @@ Route::middleware(['auth', 'verified'])->group(function (){
             Route::get('/create', Admin\Contracts\create::class)->name('create');
             Route::get('/{id}/edit', Admin\Contracts\Edit::class)->name('edit');
         });
-        Route::prefix('Payrolls')->name('Payrolls.')->group(function () {
+        Route::prefix('payrolls')->name('Payrolls.')->group(function () {
             Route::get('/', Admin\Payrolls\Index::class)->name('index');
             Route::get('/{id}/show', Admin\Payrolls\show::class)->name('show');
+        });
+        Route::prefix('payments')->name('payments.')->group(function () {
+            Route::get('/', Admin\Payments\Index::class)->name('index');
+            Route::get('/{id}/show', Admin\Payments\show::class)->name('show');
         });
     });
 });

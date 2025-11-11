@@ -1,3 +1,10 @@
 <div>
-    {{-- The whole world belongs to you. --}}
+    <div class="relative mb-6 w-full">
+        <flux:heading size="xl">
+            Dashboard
+        </flux:heading>
+        <flux:subheading size="lg" class="mb-6">
+            Welcome {{ auth()->user()->name }}
+        </flux:subheading>
+    </div>
 </div>
