@@ -40,15 +40,17 @@
                     <flux:navlist.item icon="currency-dollar" :href="route('payrolls.index')" :current="request()->routeIs('payrolls.index')" wire:navigate>{{ __('Accounting') }}</flux:navlist.item>
                     <flux:navlist.item icon="users" :href="route('payments.index')" :current="request()->routeIs('payments.create')" wire:navigate>{{ __('Create Accounting Entry') }}</flux:navlist.item>
                 </flux:navlist.group>
+
+                <p class="text-red-500">{{ session('message') }}</p>
             </flux:navlist>
 
             <flux:spacer />
 
             <flux:dropdown>
                 <flux:profile 
-                    :name="App\Models\Company::find(session('company_id'))->name??'Select Company'"
-                    :initials="App\Models\Company::find(session('company_id'))->initials??'N/A'"
-                    icon-trailing= "chevrons-up-down"
+                    :name="App\Models\Company::find(session('company_id'))->name ?? 'Select Company'"
+                    :initials="App\Models\Company::find(session('company_id'))->initials ?? 'N/A'"
+                    icon:trailing= "chevrons-up-down"
                 />
                 <flux:menu>
                     @foreach (auth()->user()->companies as $company)
@@ -59,7 +61,7 @@
                 </flux:menu>
             </flux:dropdown>
 
-            <flux:navlist variant="outline">
+            {{-- <flux:navlist variant="outline">
                 <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
                 {{ __('Repository') }}
                 </flux:navlist.item>
@@ -67,7 +69,7 @@
                 <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
                 {{ __('Documentation') }}
                 </flux:navlist.item>
-            </flux:navlist>
+            </flux:navlist> --}}
 
             <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">
@@ -96,6 +98,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
