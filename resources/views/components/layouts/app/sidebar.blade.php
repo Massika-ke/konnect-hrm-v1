@@ -16,6 +16,11 @@
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
 
+                <flux:navlist.group :heading="__('Companies')" class="grid">
+                    <flux:navlist.item icon="users" :href="route('companies.index')" :current="request()->routeIs('companies.index')" wire:navigate>{{ __('Companies\' List') }}</flux:navlist.item>
+                    <flux:navlist.item icon="plus" :href="route('companies.create')" :current="request()->routeIs('companies.create')" wire:navigate>{{ __('Create Company') }}</flux:navlist.item>
+                </flux:navlist.group>
+
                 <flux:navlist.group :heading="__('Departments')" class="grid">
                     <flux:navlist.item icon="users" :href="route('departments.index')" :current="request()->routeIs('departments.index')" wire:navigate>{{ __('Departments\' List') }}</flux:navlist.item>
                     <flux:navlist.item icon="plus" :href="route('departments.create')" :current="request()->routeIs('departments.create')" wire:navigate>{{ __('Create Department') }}</flux:navlist.item>
@@ -50,14 +55,13 @@
                 <flux:profile 
                     :name="App\Models\Company::find(session('company_id'))->name ?? 'Select Company'"
                     :initials="App\Models\Company::find(session('company_id'))->initials ?? 'N/A'"
-                    icon:trailing= "chevrons-up-down"
-                />
+                    icon:trailing="chevrons-up-down" />
                 <flux:menu>
-                    @foreach (auth()->user()->companies as $company)
-                        <flux:menu.radio.group>
-                            @livewire('company-switch', ['company'=>$company], key($company->id))
-                        </flux:menu.radio.group>
-                    @endforeach
+                    <flux:menu.radio.group>
+                        @foreach (auth()->user()->companies as $company)
+                            @livewire('company-switch', ['company' => $company], key($company->id))
+                        @endforeach
+                    </flux:menu.radio.group>
                 </flux:menu>
             </flux:dropdown>
 
