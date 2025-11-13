@@ -30,50 +30,50 @@ class DepartmentsSeeder extends Seeder
                     'name' => 'Marketing',
                 ],
             ]);
-        }
 
-        foreach ($departments as $department) {
-            switch ($department->name) {
-                case 'Engineering':
-                    $designations = [
-                        'Software Engineer',
-                        'Cyber Security',
-                        'Engineering Manager',
-                        'QA Engineer',
-                    ];
-                    break;
+            foreach ($departments as $department) {
+                switch ($department->name) {
+                    case 'Engineering':
+                        $designations = [
+                            'Software Engineer',
+                            'Cyber Security',
+                            'Engineering Manager',
+                            'QA Engineer',
+                        ];
+                        break;
 
-                case 'Human Resources':
-                    $designations = [
-                         'HR Manager',
-                         'Recruiter',
-                         'HR Coordinator',
-                    ];
-                    break;
+                    case 'Human Resources':
+                        $designations = [
+                            'HR Manager',
+                            'Recruiter',
+                            'HR Coordinator',
+                        ];
+                        break;
 
-                case 'Finance':
-                    $designations = [
-                         'Accountant',
-                         'Financial Analyst',
-                         'Finance Manager',
-                    ];
-                    break;
+                    case 'Finance':
+                        $designations = [
+                            'Accountant',
+                            'Financial Analyst',
+                            'Finance Manager',
+                        ];
+                        break;
 
-                case 'Marketing':
-                    $designations = [
-                         'Marketing Manager',
-                         'Content Strategist',
-                         'SEO Specialist',
-                    ];
-                    break;
-                default:
-                    $designations = [];
-                    break;
-            }
-            foreach ($designations as $designation) {
-                $department->designations()->create([
-                    'name' => $designation,
-                ]);
+                    case 'Marketing':
+                        $designations = [
+                            'Marketing Manager',
+                            'Content Strategist',
+                            'SEO Specialist',
+                        ];
+                        break;
+                    default:
+                        $designations = [];
+                        break;
+                }
+                foreach ($designations as $designation) {
+                    $department->designations()->create([
+                        'name' => $designation,
+                    ]);
+                }
             }
         }
     }

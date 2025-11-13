@@ -16,35 +16,35 @@ class CompaniesSeeder extends Seeder
     {
         DB::table('companies')->insert([
             [
-            'name' => 'Google',
+            'name' => 'Safaricom',
             'email' => 'contact@google.com',
             'website' => 'https://www.google.com',
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name' => 'Apple',
+            'name' => 'Konnect',
             'email' => 'contact@apple.com',
             'website' => 'https://www.apple.com',
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name' => 'Microsoft',
+            'name' => 'Airtel',
             'email' => 'contact@microsoft.com',
             'website' => 'https://www.microsoft.com',
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name' => 'Tesla',
+            'name' => 'Zuku',
             'email' => 'contact@tesla.com',
             'website' => 'https://www.tesla.com',
             'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-            'name' => 'Safaricom',
+            'name' => 'Poa',
             'email' => 'contact@safaricom.com',
             'website' => 'https://www.safaricom.com',
             'created_at' => now(),
