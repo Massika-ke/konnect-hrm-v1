@@ -26,7 +26,7 @@ class Create extends Component
         $this->validate();
         $this->designation->save();
         session()->flash('success', 'Designation created successfully.');
-        return $this->redirectIntended(route('designations.index'));
+        return $this->redirectIntended(route('designations.index'), true);
     }
     public function render()
     {

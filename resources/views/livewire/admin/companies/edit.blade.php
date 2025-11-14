@@ -4,7 +4,7 @@
             Companies
         </flux:heading>
         <flux:subheading size="lg" class="mb-6">
-            Edit Company
+            Edit this Company
         </flux:subheading>
         <flux:separator />
     </div>
