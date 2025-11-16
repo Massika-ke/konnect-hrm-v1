@@ -8,8 +8,8 @@
         </flux:subheading>
         <flux:separator />
     </div>
-        
-    <form>
+
+    <form wire:submit="save" class="my-6 w-full space-y-6">
         <flux:input label="Company Name" wire:model.live="company.name" :invalid="$errors->has('company.name')"
             type="text" />
         <flux:input label="Company Email Address" wire:model.live="company.email" :invalid="$errors->has('company.email')"
