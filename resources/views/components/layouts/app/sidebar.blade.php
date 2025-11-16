@@ -52,7 +52,7 @@
             <flux:spacer />
 
             <flux:dropdown>
-                <flux:profile 
+                <flux:profile
                     :name="App\Models\Company::find(session('company_id'))->name ?? 'Select Company'"
                     :initials="App\Models\Company::find(session('company_id'))->initials ?? 'N/A'"
                     icon:trailing="chevrons-up-down" />
@@ -66,7 +66,7 @@
             </flux:dropdown>
 
             @if(session()->has('errorMsg'))
-              <x-auth-session-status class="text-center text-red-500" status="session('errorMsg')"></x-auth-session-status>  
+              <x-auth-session-status class="text-center text-red-500" :status="session('errorMsg')" />
             @endif
 
             {{-- <flux:navlist variant="outline">
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
