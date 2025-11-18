@@ -34,13 +34,13 @@ class Edit extends Component
         $this->validate();
         $this->employee->save();
         session()->flash('success', 'Employee edited succesfully');
-        return $this->redirectIntended('employee.index');
+        return $this->redirectIntended(route('employees.index'), true);
     }
 
     public function render()
     {
         $designations = Designation::inCompany()->where('department_id', $this->department_id)->get;
-        return view('livewire.admin.employees.create', [
+        return view('livewire.admin.employees.edit', [
             'designations' => $designations,
             'departments' => Department::inCompany()->get(),
         ]);
