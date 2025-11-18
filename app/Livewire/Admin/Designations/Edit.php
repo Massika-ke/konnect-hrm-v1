@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Designations;
 
+use App\Models\Department;
 use App\Models\Designation;
 use Livewire\Component;
 
@@ -30,6 +31,8 @@ class Edit extends Component
     }
     public function render()
     {
-        return view('livewire.admin.designations.edit');
+        return view('livewire.admin.designations.edit', [
+            'departments' => Department::inCompany()->get()
+        ]);
     }
 }
