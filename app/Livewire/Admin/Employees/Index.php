@@ -19,7 +19,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.employees.index', [
-            'employees' => Employee::inCompany()->paginate(5),
+            'employees' => Employee::inCompany()->paginate(10),
         ]);
     }
 }
