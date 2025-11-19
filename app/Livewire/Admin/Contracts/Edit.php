@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-     public $contract;
+    public $contract;
     public $search = '';
     public $department_id;
 
@@ -26,7 +26,7 @@ class Edit extends Component
         ];
     }
 
-    public function mount($id) 
+    public function mount($id)
     {
         $this->contract = Contract::find($id);
         $this->search = $this->contract->employee->name;

@@ -8,7 +8,6 @@
         </flux:subheading>
         <flux:separator />
     </div>
-
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -25,6 +24,7 @@
                         </thead>
 
                         <tbody>
+
                             @foreach ($departments as $key=>$department)
                             <tr class="text-center bg-nos-100 hover:bg-nos-50 dark:bg-nos-900 dark:hover:bg-nos-700">
                                 <td>{{ $key+1 }}</td>

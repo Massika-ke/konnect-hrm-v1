@@ -10,6 +10,8 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination, WithoutUrlPagination;
+    public $search = '';
     public function delete($id)
     {
         Contract::find($id)->delete();
@@ -19,8 +21,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.admin.departments.index', [
-            'departments' => $departments,
-            'contracts' => Contract::inCompany()->paginate(10)
+            'contracts' => Contract::inCompany()->searchByEmployee($this->search)->paginate(10)
         ]);
     }
 }
