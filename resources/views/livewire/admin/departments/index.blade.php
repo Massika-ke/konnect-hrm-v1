@@ -26,26 +26,26 @@
                         <tbody>
 
                             @foreach ($departments as $key=>$department)
-                            <tr class="text-center bg-nos-100 hover:bg-nos-50 dark:bg-nos-900 dark:hover:bg-nos-700">
-                                <td>{{ $key+1 }}</td>
-                                <td class="text-zinc-900 dark:text-white flex justify-left items-center">
-                                    <span>{{ $department->name }}</span>
-                                </td>
-                                <td>
-                                    {{ $department->designations->count() }}
-                                </td>
-                                <td>
-                                    {{ $department->designations->flatMap->employees->count() }}
-                                </td>
-                                <td>
-                                    <div>
-                                        <flux:button variant="filled" icon="pencil"
-                                            :href="route('departments.edit', $department->id)" />
-                                        <flux:button variant="danger" icon="trash"
-                                            wire:click="delete({{ $department->id }})" />
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr class="text-center bg-nos-100 hover:bg-nos-50 dark:bg-nos-900 dark:hover:bg-nos-700">
+                                    <td>{{ $key+1 }}</td>
+                                    <td class="text-zinc-900 dark:text-white flex justify-left items-center">
+                                        <span>{{ $department->name }}</span>
+                                    </td>
+                                    <td>
+                                        {{ $department->designations->count() }}
+                                    </td>
+                                    <td>
+                                        {{ $department->designations->flatMap->employees->count() }}
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <flux:button variant="filled" icon="pencil"
+                                                :href="route('departments.edit', $department->id)" />
+                                            <flux:button variant="danger" icon="trash"
+                                                wire:click="delete({{ $department->id }})" />
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

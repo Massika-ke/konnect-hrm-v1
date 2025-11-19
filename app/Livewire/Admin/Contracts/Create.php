@@ -26,7 +26,7 @@ class Create extends Component
         ];
     }
 
-    public function mount() 
+    public function mount()
     {
         $this->contract = new Contract();
     }

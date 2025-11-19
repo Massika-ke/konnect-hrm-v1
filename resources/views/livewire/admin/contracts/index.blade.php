@@ -18,6 +18,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Employee Details</th>
+                                <th>Contract Details</th>
                                 <th>Rate</th>
                                 <th>Actions</th>
                             </tr>
