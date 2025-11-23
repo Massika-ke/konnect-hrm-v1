@@ -7,6 +7,14 @@
             List of employees for {{ getCompany()->name }}
         </flux:subheading>
         <flux:separator />
+    </div><div class="relative mb-6 w-full">
+        <flux:heading size="xl">
+            Employees
+        </flux:heading>
+        <flux:subheading size="lg" class="mb-6">
+            List of employees for {{ getCompany()->name }}
+        </flux:subheading>
+        <flux:separator />
     </div>
 
     <div class="flex flex-col">

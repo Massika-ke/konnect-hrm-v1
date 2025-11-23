@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payroll extends Model
 {
+
+    
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -24,7 +26,7 @@ class Payroll extends Model
 
     public function scopeInCompany($query)
     {
-        return $query->where('company_id', $this->company_id);
+        return $query->where('company_id', session('company_id'));
     }
 
     public function getMonthYearAttribute()

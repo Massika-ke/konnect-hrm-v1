@@ -39,7 +39,7 @@ class Edit extends Component
 
     public function render()
     {
-        $designations = Designation::inCompany()->where('department_id', $this->department_id)->get;
+        $designations = Designation::inCompany()->where('department_id', $this->department_id)->get();
         return view('livewire.admin.employees.edit', [
             'designations' => $designations,
             'departments' => Department::inCompany()->get(),
