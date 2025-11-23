@@ -23,6 +23,12 @@ class Index extends Component
         ];
     }
 
+    public function viewPayroll($id)
+    {
+        $payroll = Payroll::inCompany()->find($id);
+        $this->redirectIntended(route('payrolls.show', $payroll), true);
+    }
+
     public function generatePayroll()
     {
         $this->validate(); // validate input
@@ -46,7 +52,7 @@ class Index extends Component
             // loop thru all employees in the company, check for an active contract
             foreach (Employee::inCompany()->get() as $employee) {
                 $contract = $employee->getActiveContract(
-                    $date->startOfMonth()->toDateString(), 
+                    $date->startOfMonth()->toDateString(),
                     $date->endOfMonth()->toDateString());
 
                     // If an active contract exits, create salary record
@@ -69,7 +75,7 @@ class Index extends Component
 
         foreach (Employee::inCompany()->get() as $employee) {
             $contract = $employee->getActiveContract(
-                $payroll->year. '-'.$payroll->month.'-01', 
+                $payroll->year. '-'.$payroll->month.'-01',
                 $payroll->year. '-'.$payroll->month.'-31');
 
                 // recreate salary records
