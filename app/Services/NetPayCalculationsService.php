@@ -35,7 +35,7 @@ class NetPayCalculationsService
     }
     public function getTaxableIncome()
     {
-        return $this->gross_salary - ($this->getNssfDeduction()+$this->getShifDeduction()+$this->getAhlDeduction())
+        return $this->gross_salary - ($this->getNssfDeduction()+$this->getShifDeduction()+$this->getAhlDeduction());
     }
     public function getPaye()
     {
@@ -46,6 +46,33 @@ class NetPayCalculationsService
         $level4 = [9600000 / 12, 0.325];
         $level5 = [INF, 0.35];
 
+        $taxableIncome = $this->getTaxableIncome();
+        $paye = 0;
+
+        if ($taxableIncome <= $level1[0]) {
+            $paye = $taxableIncome * $level1[1];
+        }elseif ($taxableIncome <= $level2[0]) {
+            $paye = ($level1[0] * $level1[1]) + (($taxableIncome - $level1[0]) * $level2[1]);
+        }elseif ($taxableIncome <= $level3[0]) {
+            $paye = ($level1[0] * $level1[1]) + (($level2[0] -$level1[0]) * $level2[1]) + (($taxableIncome - $level2[0]) * $level3[1]);
+        }elseif ($taxableIncome <= $level4[0]) {
+            $paye = ($level1[0] * $level1[1]) + (($level2[0] -$level1[0]) * $level2[1]) + (($level3[0] -$level2[0]) * $level3[1]) + (($taxableIncome - $level3[0]) * $level4[1]);
+        }else {
+            $paye = ($level1[0] * $level1[1]) + (($level2[0] -$level1[0]) * $level2[1]) + (($level3[0] -$level2[0]) * $level3[1])+ (($level4[0] -$level3[0]) * $level4[1]) + (($taxableIncome - $level4[0]) * $level5[1]);
+        }
+
+        $relief = 2400;
+        // insurance relief is 15% of any insurance covers taken like SHIF
+        // $insuranceRelief = 0.15 * $this->getShifDeduction();
+        $paye -= $relief;
+        $paye = max($paye, 0);
+
+        return $paye;
+    }
+
+    public function getNetPay()
+    {
+        $this->gross_salary - $this->getDeductions();
     }
 
 }
