@@ -10,7 +10,7 @@ class Salary extends Model
     protected $fillabe = [
         'payroll_id',
         'employee_id',
-        'gross_salary'
+        'gross_salary',
     ];
 
     public function payroll()
