@@ -17,7 +17,7 @@ class NetPayCalculationsService
     {
         // NSSF Kenya deduction max = 4320. Usually 6% of the salary
         $max = 4320;
-        return min($this->gross_salary, $max);
+        return min($this->gross_salary * 0.06, $max);
     }
     public function getShifDeduction()
     {
@@ -72,7 +72,7 @@ class NetPayCalculationsService
 
     public function getNetPay()
     {
-        $this->gross_salary - $this->getDeductions();
+        return $this->gross_salary - $this->getDeductions();
     }
 
 }
