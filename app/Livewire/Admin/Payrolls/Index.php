@@ -21,8 +21,7 @@ class Index extends Component
         return [
             'monthYear' => 'required',
         ];
-    }
-
+    } 
     public function viewPayroll($id)
     {
         $payroll = Payroll::inCompany()->find($id);

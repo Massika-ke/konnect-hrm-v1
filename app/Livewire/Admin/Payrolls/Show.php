@@ -17,7 +17,7 @@ class Show extends Component
         $this->payroll = Payroll::inCompany()->find($id);
     }
 
-    public function generatePayroll($id)
+    public function generatePayslip($id)
     {
         $salary = Salary::find($id);
         $pdf = Pdf::loadView('pdf.payslip', ['salary' => $salary]);

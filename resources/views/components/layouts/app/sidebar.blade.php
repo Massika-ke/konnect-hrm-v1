@@ -43,8 +43,8 @@
                     </flux:navlist.group>
 
                     <flux:navlist.group :heading="__('Accounting')" class="grid">
-                        <flux:navlist.item icon="currency-dollar" :href="route('payrolls.index')" :current="request()->routeIs('payrolls.index')" wire:navigate>{{ __('Accounting') }}</flux:navlist.item>
-                        <flux:navlist.item icon="users" :href="route('payments.index')" :current="request()->routeIs('payments.create')" wire:navigate>{{ __('Create Accounting Entry') }}</flux:navlist.item>
+                        <flux:navlist.item icon="currency-dollar" :href="route('payrolls.index')" :current="request()->routeIs('payrolls.index')" wire:navigate>{{ __('Payrolls') }}</flux:navlist.item>
+                        <flux:navlist.item icon="users" :href="route('payments.index')" :current="request()->routeIs('payments.index')" wire:navigate>{{ __('Payroll Payments') }}</flux:navlist.item>
                     </flux:navlist.group>
 
                 @endif
