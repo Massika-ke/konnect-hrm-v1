@@ -45,9 +45,12 @@ class Edit extends Component
 
     public function render()
     {
-        if (!auth()->user()->hasCompany($this->company->id)) {
+        $user = auth()->user();
+
+        if (!$user || !$user->hasCompany($this->company->id)) {
             abort(403, "You cannot edit this company");
         }
+        
         return view('livewire.admin.companies.edit');
     }
 }
