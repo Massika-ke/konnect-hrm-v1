@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('employee_id')->constrained()->onDelete('cascade');
             $table->decimal('amount', 10, 2);
             $table->date('payment_date')->nullable();
-            $table->date('payment_method')->nullable();
-            $table->date('reference')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->string('reference')->nullable();
             $table->timestamps();
         });
     }
