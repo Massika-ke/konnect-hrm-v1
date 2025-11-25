@@ -37,7 +37,7 @@ class Create extends Component
             $this->company->logo = $this->logo->store('logos', 'public');
         }
         $this->company->save();
-        $this->company->users()->attach(Auth::user()->id);
+        $this->company->users()->attach(Auth::user()->id); 
         session()->flash('success', 'Company created successfully.');
         return $this->redirectIntended(route('companies.index'), true);
     }

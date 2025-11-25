@@ -37,7 +37,7 @@ class Edit extends Component
 
             $this->company->logo = $this->logo->store('logos', 'public');
         }
-        
+
         $this->company->save();
         session()->flash('success', 'Company created successfully.');
         return $this->redirectIntended(route('companies.index'), true);
@@ -45,6 +45,9 @@ class Edit extends Component
 
     public function render()
     {
+        if (!auth()->user()->hasCompany($this->company->id)) {
+            abort(403, "You cannot edit this company");
+        }
         return view('livewire.admin.companies.edit');
     }
 }
