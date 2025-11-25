@@ -68,8 +68,8 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <flux:tooltip content="Dowload Payslip">
-                                            <flux:button variant="filled" icon="document-arrow-down" :href="route('designations.edit', $designation->id)" wire:click="generatePayslip({{ $salary->id }})"/>
+                                        <flux:tooltip content="Download Payslip">
+                                            <flux:button variant="filled" icon="document-arrow-down" wire:click="generatePayslip({{ $salary->id }})"/>
                                         </flux:tooltip>
                                     </div>
                                 </td>

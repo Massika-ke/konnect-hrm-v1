@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Company extends Model
 {
@@ -30,5 +31,11 @@ class Company extends Model
     public function getLogoUrlAttribute()
     {
         return $this->logo ? asset('storage/' .$this->logo) : asset('images/default-logo.png');
+    }
+    public function scopeForUser($query)
+    {
+        return $query->whereHas('users', function($q){
+            $q->where('id', Auth::user()->id);
+        });
     }
 }
